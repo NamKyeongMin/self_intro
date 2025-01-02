@@ -136,7 +136,7 @@ fetch("https://m.search.naver.com/p/csearch/content/apirender.nhn?where=nexearch
         fortuneSection.append(fortuneTextE);
 
         const contactSection = document.querySelector(".contact");
-        // contactSection.before(fortuneSection); // contact의 전에 fortune 추가
+        // contactSection.before(fortuneSection); -> contact의 전에 fortune 추가
         contactSection.after(fortuneSection); // contact의 뒤에 fortune 추가
 
         // section 초기화 및 이벤트 리스너 추가

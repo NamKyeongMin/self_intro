@@ -143,8 +143,8 @@ fetch("https://m.search.naver.com/p/csearch/content/apirender.nhn?where=nexearch
         initializeSections();
     });
 
+// section 초기화 및 이벤트 리스너 '함수화'
 function initializeSections() {
-    // 함수화
     // rigth_container 내 모든 section을 불러옴
     // sections는 위 작용을 통해 반환된 NodeList
     const sections = document.querySelectorAll('.right_container section');
@@ -194,7 +194,13 @@ function initializeSections() {
     sections.forEach((section, index) => {
         section.addEventListener("click", (event) => {
             const sectionWidth = section.offsetWidth;
+            // offsetWidth: 대상(section)의 padding까지의 width를 가져옴
             const clickX = event.clientX - section.getBoundingClientRect().left;
+            /*
+            event.clientX => 왼쪽(0px)으로부터 클릭한 커서의 x좌표 
+            section.getBoundingClientRect() => 왼쪽(0px)으로부터 section의 가장 왼쪽 가장자리의 x 좌표
+            clickX => section의 왼쪽 가장자리로부터 커서의 x 좌표의 위치 => section의 너비(sectionWidth)와 비교하기 적합함!!
+            */
 
             if (clickX < sectionWidth / 3) {  // 왼쪽 1/3 클릭 시 이전 section으로 이동
                 showBeforeSection();
